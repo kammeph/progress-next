@@ -10,17 +10,20 @@ datasource db {
 
 model User {
   id        String   @id @default(uuid())
-  name      String   @unique
+  username  String   @unique @map("username")
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  canLogin  Boolean  @default(false)
+  locale    String   @default("en")
   roles     UserRole[]
 
   @@map("progress_users")
 }
 
 model UserRole {
-  userId   String @id @map("user_id")
+  id       String @id @default(uuid())
+  userId   String @map("user_id")
   user     User   @relation(fields: [userId], references: [id]) 
   role     Role
 
