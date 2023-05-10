@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import SignupForm from './signup-form';
-import { signup } from './_actions';
+import LoginForm from './login-form';
+import { login } from './_actions';
 
-export default function SignupPage() {
+export default function LoginPage() {
   return (
     <div className="flex h-full justify-center items-center">
       <div className="card max-w-sm m-5">
@@ -15,11 +15,11 @@ export default function SignupPage() {
           src="/kk_logo_black.png"
           alt="Kilo für Kilo Logo"
         />
-        <SignupForm signup={signup} />
+        <LoginForm login={login} />
         <div className="flex gap-2 justify-center">
-          <span>Already have an account?</span>
-          <Link className="font-anton" href="/login">
-            Login
+          <span>You don&apos;t have an account?</span>
+          <Link className="font-anton" href="/signup">
+            Sign Up
           </Link>
         </div>
       </div>

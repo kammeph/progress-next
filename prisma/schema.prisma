@@ -10,7 +10,7 @@ datasource db {
 
 model User {
   id        String   @id @default(uuid())
-  username  String   @unique @map("username")
+  username  String   @unique 
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -23,11 +23,11 @@ model User {
 
 model UserRole {
   id       String @id @default(uuid())
-  userId   String @map("user_id")
-  user     User   @relation(fields: [userId], references: [id]) 
+  user_id  String @map("userId")
+  user     User   @relation(fields: [user_id], references: [id]) 
   role     Role
 
-  @@index([userId])
+  @@index([user_id])
 
   @@map("progress_user_roles")
 }
