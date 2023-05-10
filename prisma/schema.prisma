@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  roles     UserRole[]
+
+  @@map("progress_users")
+}
+
+model UserRole {
+  userId   String @id @map("user_id")
+  user     User   @relation(fields: [userId], references: [id]) 
+  role     Role
+
+  @@index([userId])
+
+  @@map("progress_user_roles")
+}
+
+enum Role {
+  ADMIN
+  TRAINER
+  TRAINEE
+}
