@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import { prisma } from '@/lib/db/db';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export async function login(username: string, password: string) {
   if (!username || !password) throw new Error('Invalid username or password');
@@ -25,5 +26,6 @@ export async function login(username: string, password: string) {
     secure: true,
     path: '/'
   });
-  redirect('/');
+  revalidatePath('/profile');
+  redirect('/profile');
 }
