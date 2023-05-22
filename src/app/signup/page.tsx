@@ -8,7 +8,7 @@ export default function SignupPage() {
     <div className="flex h-full justify-center items-center">
       <div className="card max-w-sm m-5">
         <Image
-          className="mx-auto"
+          className="mx-auto w-auto h-auto"
           priority={true}
           width={192}
           height={120}
