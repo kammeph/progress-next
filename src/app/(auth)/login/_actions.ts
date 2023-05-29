@@ -1,16 +1,18 @@
 'use server';
 
 import bcrypt from 'bcrypt';
-import { prisma } from '@/lib/db';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { db } from '@/lib/drizzle';
 
 export async function login(username: string, password: string) {
   if (!username || !password) throw new Error('Invalid username or password');
-  const user = await prisma.user.findUnique({
-    where: {
-      username: username
+
+  const user = await db.query.users.findFirst({
+    where: (users, { eq }) => eq(users.username, username),
+    with: {
+      roles: true
     }
   });
 
