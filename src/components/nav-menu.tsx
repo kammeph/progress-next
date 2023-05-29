@@ -1,17 +1,22 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 
-export default function NavMenu() {
+export default function NavMenu({ logout }: { logout: () => Promise<void> }) {
+  const [_, startTransition] = useTransition();
   const menuRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   function handleOpen() {
     setOpen(open => !open);
   }
 
+  function handleLogout() {
+    startTransition(() => logout());
+  }
+
   useEffect(() => {
-    const onClick = (event: MouseEvent) => {
+    const onClick = (event: Event) => {
       console.log(event.target);
       if (!menuRef.current?.contains(event.target as Node) && open) setOpen(false);
     };
@@ -48,6 +53,9 @@ export default function NavMenu() {
       >
         <Link href="/exercises">Exercises</Link>
         <Link href="/profile">Profile</Link>
+        <span className="cursor-pointer" onClick={handleLogout}>
+          Logout
+        </span>
       </nav>
     </div>
   );

@@ -1,11 +1,12 @@
 import NavMenu from '@/components/nav-menu';
 import Image from 'next/image';
+import { logout } from './_actions';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header className="flex flex-row bg-black items-stretch p-2">
-        <NavMenu></NavMenu>
+        <NavMenu logout={logout} />
         <Image
           className="mx-auto w-auto h-auto"
           priority={true}
@@ -16,7 +17,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           alt="Kilo für Kilo Logo"
         />
       </header>
-      <main>{children};</main>
+      <main>{children}</main>
     </>
   );
 }
