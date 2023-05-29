@@ -56,9 +56,9 @@ input::-webkit-inner-spin-button {
 }
 
 .input {
-  @apply font-actor ring-1 ring-black rounded-md py-2 pl-3 mb-2 enabled:shadow-md focus:outline-black focus:outline-offset-2;
+  @apply font-actor ring-1 ring-black rounded-sm py-2 pl-3 mb-2 enabled:shadow-md focus:outline-black focus:outline-offset-2;
 }
 
 .btn {
-  @apply bg-black font-anton text-white font-medium rounded-md py-2 px-4 my-4 enabled:hover:shadow-xl disabled:bg-stone-300;
+  @apply bg-black font-anton text-white font-medium rounded-sm py-2 px-4 my-4 enabled:hover:shadow-xl disabled:bg-stone-300;
 }

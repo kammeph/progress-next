@@ -1,7 +1,7 @@
 'use server';
 
 import bcrypt from 'bcrypt';
-import { prisma } from '@/lib/db/db';
+import { prisma } from '@/lib/db';
 import { redirect } from 'next/navigation';
 
 export async function signup(username: string, password: string) {
