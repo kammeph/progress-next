@@ -8,7 +8,7 @@ export default function NavMenu({ logout }: { logout: () => Promise<void> }) {
   const menuRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   function handleOpen() {
-    setOpen(open => !open);
+    setOpen((open) => !open);
   }
 
   function handleLogout() {
@@ -17,7 +17,6 @@ export default function NavMenu({ logout }: { logout: () => Promise<void> }) {
 
   useEffect(() => {
     const onClick = (event: Event) => {
-      console.log(event.target);
       if (!menuRef.current?.contains(event.target as Node) && open) setOpen(false);
     };
     document.addEventListener('click', onClick);
@@ -26,7 +25,7 @@ export default function NavMenu({ logout }: { logout: () => Promise<void> }) {
 
   return (
     <div ref={menuRef}>
-      <button className="bg-black text-white p-4 group h-full" onClick={handleOpen}>
+      <button className='bg-black text-white p-4 group h-full' onClick={handleOpen}>
         <span
           className={`block h-1 w-8 rad relative rounded-3xl bg-white 
           before:block before:h-1 before:rounded-3xl before:bg-white before:bottom-2 before:absolute 
@@ -51,9 +50,9 @@ export default function NavMenu({ logout }: { logout: () => Promise<void> }) {
         }`}
         onClick={handleOpen}
       >
-        <Link href="/exercises">Exercises</Link>
-        <Link href="/profile">Profile</Link>
-        <span className="cursor-pointer" onClick={handleLogout}>
+        <Link href='/exercises'>Exercises</Link>
+        <Link href='/profile'>Profile</Link>
+        <span className='cursor-pointer' onClick={handleLogout}>
           Logout
         </span>
       </nav>

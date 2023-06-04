@@ -21,25 +21,25 @@ export default function LoginForm({ login }: { login: (username: string, passwor
   }
 
   return (
-    <form onSubmit={handleLogin} className="flex flex-col gap-2">
+    <form onSubmit={handleLogin} className='flex flex-col gap-2'>
       <input
         ref={usernameRef}
-        className="input"
-        type="text"
-        placeholder="Username"
-        name="username"
+        className='input'
+        type='text'
+        placeholder='Username'
+        name='username'
         value={username}
-        onChange={e => setUsername(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <input
-        className="input"
-        type="password"
-        placeholder="Password"
-        name="password"
+        className='input'
+        type='password'
+        placeholder='Password'
+        name='password'
         value={password}
-        onChange={e => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
       />
-      <button className="btn" type="submit" disabled={!isFormValid()}>
+      <button className='btn' type='submit' disabled={!isFormValid()}>
         Login{' '}
       </button>
     </form>
