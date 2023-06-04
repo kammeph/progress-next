@@ -10,7 +10,7 @@ export async function logout() {
     value: '',
     httpOnly: true,
     secure: true,
-    path: '/'
+    path: '/',
   });
   redirect('/login');
 }

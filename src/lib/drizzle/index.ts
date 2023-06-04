@@ -1,13 +1,12 @@
 import { drizzle } from 'drizzle-orm/planetscale-serverless';
 import { connect } from '@planetscale/database';
 import { migrate } from 'drizzle-orm/planetscale-serverless/migrator';
-import { userRoles, userRolesRelations, users, usersRelations } from './schema/users';
+import { exerciseSchemas } from './schema/exercises';
+import { userSchemas } from './schema/users';
 
 export const schema = {
-  users,
-  userRoles,
-  usersRelations,
-  userRolesRelations
+  ...exerciseSchemas,
+  ...userSchemas
 };
 
 // create the connection

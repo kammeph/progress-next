@@ -1,7 +1,7 @@
 import { relations, sql } from 'drizzle-orm';
 import { boolean, index, mysqlEnum, mysqlTable, timestamp, uniqueIndex, varchar } from 'drizzle-orm/mysql-core';
 
-export const userRolesEnum = ['ADMIN', 'TRAINER', 'TRAINEE'] as const;
+export const UserRoles = ['ADMIN', 'TRAINER', 'TRAINEE'] as const;
 
 export const userRoles = mysqlTable(
   'progress_user_roles',
@@ -10,7 +10,7 @@ export const userRoles = mysqlTable(
       .primaryKey()
       .default(sql`(UUID())`),
     userId: varchar('user_id', { length: 36 }).notNull(),
-    role: mysqlEnum('role', userRolesEnum).notNull()
+    role: mysqlEnum('role', UserRoles).notNull()
   },
   table => {
     return {
@@ -49,3 +49,10 @@ export const users = mysqlTable(
 export const usersRelations = relations(users, ({ many }) => ({
   roles: many(userRoles)
 }));
+
+export const userSchemas = {
+  users,
+  userRoles,
+  usersRelations,
+  userRolesRelations
+};
