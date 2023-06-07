@@ -50,6 +50,7 @@ export default function NavMenu({ logout }: { logout: () => Promise<void> }) {
         }`}
         onClick={handleOpen}
       >
+        <Link href='/volume-calculator'>Volume Calculator</Link>
         <Link href='/exercises'>Exercises</Link>
         <Link href='/profile'>Profile</Link>
         <span className='cursor-pointer' onClick={handleLogout}>

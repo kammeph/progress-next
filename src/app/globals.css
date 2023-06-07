@@ -47,6 +47,18 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
+.readonly-select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+.readonly-select::-ms-expand {
+  display: none;
+}
+
 .card {
   @apply h-min shadow-lg rounded-lg p-5 bg-white;
 }

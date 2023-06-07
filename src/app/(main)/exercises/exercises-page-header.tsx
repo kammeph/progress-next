@@ -9,7 +9,7 @@ export default function ExercisesPageHeader({ maxIndex }: { maxIndex: number }) 
   return (
     <div className='w-full'>
       <div className='flex w-full justifiy-between items-center'>
-        <h1 className='m-4 text-xl font-anton flex-grow'>Exercises</h1>
+        <h1 className='m-4 text-xl font-anton flex-grow uppercase'>Exercises</h1>
         {showAddInput ? (
           <>
             <button onClick={() => setShowAddInput(false)} className='btn mr-4'>
