@@ -38,14 +38,15 @@ export default function LoginPage() {
   return (
     <div className='flex h-full justify-center items-center'>
       <div className='card max-w-sm m-5 w-full'>
-        <Image
+        {/* <Image
           className='mx-auto w-auto h-auto'
           priority={true}
           width={192}
           height={120}
           src='/kk_logo_black.png'
           alt='Kilo für Kilo Logo'
-        />
+        /> */}
+        <h1 className='text-center font-anton text-3xl mb-8'>Login</h1>
         <LoginForm login={login} />
         <div className='flex gap-2 justify-center'>
           <span>You don&apos;t have an account?</span>

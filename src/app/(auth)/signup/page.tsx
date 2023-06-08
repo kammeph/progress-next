@@ -19,14 +19,15 @@ export default function SignupPage() {
   return (
     <div className='flex h-full justify-center items-center'>
       <div className='card max-w-sm m-5 w-full'>
-        <Image
+        {/* <Image
           className='mx-auto w-auto h-auto'
           priority={true}
           width={192}
           height={120}
           src='/kk_logo_black.png'
           alt='Kilo für Kilo Logo'
-        />
+        /> */}
+        <h1 className='text-center font-anton text-3xl mb-8'>Sign Up</h1>
         <SignupForm signup={signup} />
         <div className='flex gap-2 justify-center'>
           <span>Already have an account?</span>
