@@ -13,7 +13,7 @@ export default function VolumeRecommendations() {
   const { adaptionFactor } = useContext(VolumeCalculatorContext);
   return (
     <details
-      className='flex flex-col pb-4 p-2 gap-2 border-b border-b-slate-400'
+      className='flex flex-col p-2 gap-2 border-b border-b-slate-400'
       onToggle={() => setDetailsOpen((state) => !state)}
     >
       <summary className='flex list-none py-2 cursor-pointer'>
