@@ -21,7 +21,10 @@ export default function VolumeRecommendations() {
         {detailsOpen ? <ChevronUpIcon className='w-6' /> : <ChevronDownIcon className='w-6' />}
       </summary>
       {cycleTypes.map((cycleType) => (
-        <div className='grid grid-cols-9 grid-rows-5 m-2 justify-center content-center border-2 border-solid border-black'>
+        <div
+          key={cycleType}
+          className='grid grid-cols-9 grid-rows-5 m-2 justify-center content-center border-2 border-solid border-black'
+        >
           <p className='col-span-9 text-center bg-red-600 border border-solid border-white text-white'>
             Volume recommendations for {cycleType}
           </p>
