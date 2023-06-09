@@ -52,7 +52,7 @@ function LoadFactorInput({ loadFactor }: { loadFactor: LoadFactor }) {
   const [value, setValue] = useState(loadFactor.value);
   return (
     <label className='flex flex-col items-start'>
-      <p className='font-actor'>{`${loadFactor.muscleGroup} (${value})`}</p>
+      <p>{`${loadFactor.muscleGroup} (${value})`}</p>
       <input type='hidden' name={`${loadFactor.muscleGroup}_ID`} value={loadFactor.id} />
       <input
         className='w-full accent-black'
