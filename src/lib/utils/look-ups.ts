@@ -113,6 +113,11 @@ export const rpeChart: { [key: string]: any } = {
   },
 };
 
+export function calculate1RM(weight: number, reps: number): number {
+  if (!weight || !reps) return 0;
+  return weight / rpeChart[10][reps];
+}
+
 export const genderAdaptionFactors = {
   MALE: 0,
   FEMALE: 5,
@@ -562,98 +567,98 @@ export const usaplClassification = {
       min: 74,
       max: 83,
       total: 389,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_4',
       min: 83,
       max: 93,
       total: 421,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_4',
       min: 93,
       max: 105,
       total: 454,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_4',
       min: 105,
       max: 120,
       total: 489,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_4',
       min: 120,
       max: 999,
       total: 527,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 0,
       max: 53,
       total: 204,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 53,
       max: 59,
       total: 241,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 59,
       max: 66,
       total: 268,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 66,
       max: 74,
       total: 296,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 74,
       max: 83,
       total: 325,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 83,
       max: 93,
       total: 354,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 93,
       max: 105,
       total: 382,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 105,
       max: 120,
       total: 413,
-      factor: 0,
+      factor: 1,
     },
     {
       class: 'CLASS_5',
       min: 120,
       max: 999,
       total: 447,
-      factor: 0,
+      factor: 1,
     },
   ],
   FEMALE: [
@@ -1050,4 +1055,22 @@ export const usaplClassification = {
       factor: 1,
     },
   ],
+};
+
+export const volumeGuidelines = {
+  HYPERTROPHY: {
+    SQUAT: { mev: 7.5, mrv: 14 },
+    BENCH: { mev: 9, mrv: 17 },
+    DEADLIFT: { mev: 5.5, mrv: 11 },
+  },
+  STRENGTH: {
+    SQUAT: { mev: 5.5, mrv: 9 },
+    BENCH: { mev: 8, mrv: 11 },
+    DEADLIFT: { mev: 4.5, mrv: 7 },
+  },
+  PEAKING: {
+    SQUAT: { mev: 4.5, mrv: 6 },
+    BENCH: { mev: 6.5, mrv: 8.5 },
+    DEADLIFT: { mev: 2.5, mrv: 4.5 },
+  },
 };

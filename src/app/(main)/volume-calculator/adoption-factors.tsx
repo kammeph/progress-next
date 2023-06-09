@@ -7,7 +7,8 @@ import {
   weightAdaptionFactors,
 } from '@/lib/utils/look-ups';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useReducer, useRef, useState } from 'react';
+import { VolumeCalculatorContext } from './volume-calculator-context';
 
 type AdoptionFactorsState = {
   gender: 'MALE' | 'FEMALE';
@@ -122,7 +123,7 @@ function adoptionFactorsReducer(
   }
 }
 
-export default function AdoptionFactors({ total }: { total: number }) {
+export default function AdoptionFactors() {
   const [state, dispatch] = useReducer(adoptionFactorsReducer, {
     gender: 'MALE',
     weight: 85,
@@ -152,11 +153,11 @@ export default function AdoptionFactors({ total }: { total: number }) {
       state.regenerationFactor,
     [state]
   );
+  const { total, setAdaptionFactor } = useContext(VolumeCalculatorContext);
   useEffect(() => {
     const usaplClass = usaplClassification[state.gender]?.find(
       (c) => (c.min === null || c.min <= state.weight) && (c.max === null || c.max > state.weight) && c.total <= total
     );
-    console.log('usapl class', usaplClass);
     if (usaplClass) {
       dispatch({
         type: SET_STRENGTH_LEVEL,
@@ -172,6 +173,8 @@ export default function AdoptionFactors({ total }: { total: number }) {
       });
     }
   }, [total, state.gender, state.weight]);
+
+  useEffect(() => setAdaptionFactor(totalFactor()), [totalFactor, setAdaptionFactor]);
   const [detailsOpen, setDetailsOpen] = useState(false);
   return (
     <details
@@ -205,7 +208,7 @@ export default function AdoptionFactors({ total }: { total: number }) {
           <div className='flex input flex-grow'>
             <input
               className='flex-grow outline-none'
-              type='number'
+              type='tel'
               name='weight'
               placeholder='Weight'
               value={state.weight}
@@ -223,7 +226,7 @@ export default function AdoptionFactors({ total }: { total: number }) {
           <div className='flex input flex-grow'>
             <input
               className='flex-grow outline-none'
-              type='number'
+              type='tel'
               name='height'
               placeholder='Height'
               value={state.height}
