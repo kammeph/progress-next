@@ -1,3 +1,5 @@
+import { Gender, StrengthLevel } from '../drizzle/schema/adaption-factors';
+
 export const rpeChart: { [key: string]: any } = {
   '10': {
     '1': 1.0,
@@ -170,6 +172,13 @@ export const weightAdaptionFactors = {
   ],
 };
 
+export function calculateWeightAdaptionFactor(weight: number, gender: Gender) {
+  return (
+    weightAdaptionFactors[gender].find((f) => (f.min === null || f.min <= weight) && (f.max === null || f.max > weight))
+      ?.factor || 0
+  );
+}
+
 export const heightAdaptionFactors = {
   MALE: [
     {
@@ -217,7 +226,22 @@ export const heightAdaptionFactors = {
   ],
 };
 
-export const usaplClassification = {
+export function calculateHeightAdaptionFactor(height: number, gender: Gender) {
+  return (
+    heightAdaptionFactors[gender].find((f) => (f.min === null || f.min <= height) && (f.max === null || f.max > height))
+      ?.factor || 0
+  );
+}
+
+export type usaplClass = {
+  class: StrengthLevel;
+  min: number;
+  max: number;
+  total: number;
+  factor: number;
+};
+
+export const usaplClassification: { MALE: usaplClass[]; FEMALE: usaplClass[] } = {
   MALE: [
     {
       class: 'ELITE',
@@ -1057,6 +1081,12 @@ export const usaplClassification = {
   ],
 };
 
+export function getUsaplClassification(gender: Gender, weight: number, total: number) {
+  return usaplClassification[gender].find(
+    (c) => (c.min === null || c.min <= weight) && (c.max === null || c.max > weight) && c.total <= total
+  );
+}
+
 export const volumeGuidelines = {
   HYPERTROPHY: {
     SQUAT: { mev: 7.5, mrv: 14 },
@@ -1073,4 +1103,4 @@ export const volumeGuidelines = {
     BENCH: { mev: 6.5, mrv: 8.5 },
     DEADLIFT: { mev: 2.5, mrv: 4.5 },
   },
-};
+} as const;

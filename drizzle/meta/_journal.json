@@ -15,6 +15,13 @@
       "when": 1685909482174,
       "tag": "0001_yielding_puma",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1686773463369,
+      "tag": "0002_opposite_violations",
+      "breakpoints": true
     }
   ]
 }

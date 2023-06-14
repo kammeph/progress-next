@@ -1,9 +1,9 @@
 'use client';
 
-import { useContext, useState } from 'react';
-import { VolumeCalculatorContext } from './volume-calculator-context';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { volumeGuidelines } from '@/lib/utils/look-ups';
+import { useContext, useState } from 'react';
+import { VolumeCalculatorContext } from './volume-calculator-context';
 
 const cycleTypes = ['HYPERTROPHY', 'STRENGTH', 'PEAKING'] as const;
 const mainLifts = ['SQUAT', 'BENCH', 'DEADLIFT'] as const;
@@ -34,7 +34,7 @@ export default function VolumeRecommendations() {
           <p className='col-span-2 bg-black text-white border border-solid border-white text-center'>MRV</p>
           <p className='col-span-2 bg-black text-white border border-solid border-white text-center'>Median</p>
           {mainLifts.map((mainLift) => (
-            <>
+            <div key={`${cycleType}_${mainLift}`} className='grid grid-cols-9 col-span-9'>
               <p className='col-span-2 bg-blue-100 border border-solid border-white text-center'>{mainLift}</p>
               <p className='col-span-2 text-center'>{volumeGuidelines[cycleType][mainLift].mev + adaptionFactor}</p>
               <p className='text-center'>-</p>
@@ -46,7 +46,7 @@ export default function VolumeRecommendations() {
                   adaptionFactor) /
                   2}
               </p>
-            </>
+            </div>
           ))}
         </div>
       ))}

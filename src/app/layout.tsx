@@ -11,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <body className={`${anton.variable} ${actor.variable}`}>{children}</body>
+    <html lang='en' className={`${anton.variable} ${actor.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
