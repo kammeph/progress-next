@@ -34,4 +34,5 @@ export async function handleStrengthValuesUpdate(state: StrengthValuesState) {
   } else {
     await db.update(strengthValuesSchema).set(state).where(eq(strengthValuesSchema.id, state.id));
   }
+  revalidatePath('/volume-calculator');
 }
