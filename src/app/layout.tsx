@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 import { Abel, Anton } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import { type LangParam } from "~/server/i18n";
 
 const anton = Anton({
   weight: "400",
@@ -27,11 +28,16 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  params,
+}: Readonly<{
+  children: React.ReactNode;
+  params: LangParam;
+}>) {
+  const { lang } = await params;
   return (
-    <html lang="en" className={`${abel.variable} ${anton.variable}`}>
+    <html lang={lang} className={`${abel.variable} ${anton.variable}`}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
