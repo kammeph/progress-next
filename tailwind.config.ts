@@ -6,7 +6,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        // Set Abel as the default sans font
+        sans: ["var(--font-abel)", ...fontFamily.sans],
+        // Anton as accent font
+        accent: ["var(--font-anton)", ...fontFamily.sans],
       },
     },
   },
